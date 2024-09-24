@@ -1,0 +1,213 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Theme.tres" type="Theme" id=1]
+[ext_resource path="res://Glyph.gd" type="Script" id=2]
+[ext_resource path="res://LineButton.gd" type="Script" id=3]
+
+[sub_resource type="BitmapFont" id=1]
+
+[node name="ColorRect" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -696.0
+margin_bottom = -376.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+color = Color( 0.380392, 0.380392, 0.380392, 1 )
+script = ExtResource( 2 )
+
+[node name="Inner" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -104.0
+margin_bottom = -192.0
+mouse_filter = 2
+
+[node name="Top Left" type="Button" parent="Inner"]
+margin_left = 46.0
+margin_top = 54.0
+margin_right = 50.0
+margin_bottom = 97.0
+rect_rotation = 120.0
+rect_pivot_offset = Vector2( 4, 0 )
+focus_mode = 0
+mouse_filter = 1
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Top" type="Button" parent="Inner"]
+margin_left = 50.0
+margin_top = 10.0
+margin_right = 54.0
+margin_bottom = 54.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Top Right" type="Button" parent="Inner"]
+margin_left = 54.0
+margin_top = 54.0
+margin_right = 58.0
+margin_bottom = 97.0
+rect_rotation = -120.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Middle" type="Button" parent="Inner"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 54.0
+margin_bottom = 102.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Bottom Left" type="Button" parent="Inner"]
+margin_left = 50.0
+margin_top = 98.0
+margin_right = 54.0
+margin_bottom = 141.0
+rect_rotation = 60.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Bottom" type="Button" parent="Inner"]
+margin_left = 50.0
+margin_top = 98.0
+margin_right = 54.0
+margin_bottom = 142.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Bottom Right" type="Button" parent="Inner"]
+margin_left = 50.0
+margin_top = 98.0
+margin_right = 54.0
+margin_bottom = 141.0
+rect_rotation = -60.0
+rect_pivot_offset = Vector2( 4, 0 )
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Outer" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -104.0
+margin_bottom = -192.0
+mouse_filter = 1
+
+[node name="Bottom Right" type="Button" parent="Outer"]
+margin_left = 88.0
+margin_top = 120.0
+margin_right = 96.0
+margin_bottom = 161.0
+rect_rotation = 60.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Bottom Left" type="Button" parent="Outer"]
+margin_left = 8.0
+margin_top = 120.0
+margin_right = 16.0
+margin_bottom = 161.0
+rect_rotation = -60.0
+rect_pivot_offset = Vector2( 8, 0 )
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Left" type="Button" parent="Outer"]
+margin_left = 8.0
+margin_top = 32.0
+margin_right = 16.0
+margin_bottom = 120.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Top Left" type="Button" parent="Outer"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 24.0
+margin_bottom = 73.0
+rect_rotation = -120.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Top Right" type="Button" parent="Outer"]
+margin_left = 80.0
+margin_top = 32.0
+margin_right = 88.0
+margin_bottom = 73.0
+rect_rotation = 120.0
+rect_pivot_offset = Vector2( 8, 0 )
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Invert" type="CheckBox" parent="."]
+margin_left = 44.0
+margin_top = 152.0
+margin_right = 60.0
+margin_bottom = 168.0
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
+align = 1
+expand_icon = true
+
+[node name="Binary" type="Label" parent="."]
+margin_top = 176.0
+margin_right = 104.0
+margin_bottom = 190.0
+text = "010101110101"
+align = 1
+valign = 1
+
+[node name="Decimal" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 192.0
+margin_right = 100.0
+margin_bottom = 206.0
+text = "42"
+align = 1
+valign = 1
+
+[node name="Sound" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 208.0
+margin_right = 100.0
+margin_bottom = 222.0
+text = "\"uh\""
+align = 1
+valign = 1
