@@ -4,7 +4,6 @@
 [ext_resource path="res://Glyph Count.gd" type="Script" id=3]
 
 [node name="Root" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 

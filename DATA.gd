@@ -2,7 +2,7 @@ extends Node
 
 var glyphColor = Color("000000")
 
-var glyphs: Array = [
+var baseGlyphs: Array = [
 	Glyph.new(preload("res://glyphs/Inner 1.png"), Glyph.Type.INNER),
 	Glyph.new(preload("res://glyphs/Inner 2.png"), Glyph.Type.INNER),
 	Glyph.new(preload("res://glyphs/Inner 3.png"), Glyph.Type.INNER),
@@ -82,29 +82,29 @@ func is_flipped(byte):
 	return byte.substr(0,1) == "1"
 
 func set_translation(key, value):
-	glyphs[key] = value
+	return
 
-func load_file():
-	print("Loading glyphs...")
-	var fh = File.new()
-	if not fh.file_exists("user://sphennec.dat"):
-		print("Creating new save file.")
-		save_file()
-	fh.open("user://sphennec.dat", File.READ)
-	glyphs = JSON.parse(fh.get_line()).get_result()
-	fh.close()
-	print("Loaded:")
-	print(glyphs)
+#func load_from_file():
+#	print("Loading glyphs...")
+#	var fh = File.new()
+#	if not fh.file_exists("user://sphennec.dat"):
+#		print("Creating new save file.")
+#		save_to_file()
+#	fh.open("user://sphennec.dat", File.READ)
+#	baseGlyphs = JSON.parse(fh.get_line()).get_result()
+#	fh.close()
+#	print("Loaded:")
+#	print(baseGlyphs)
 	
-func save_file():
+func save_to_file():
 	print("Saving glyphs...")
-	print(glyphs)
+	print(baseGlyphs)
 	var fh = File.new()
 	fh.open("user://sphennec.dat", File.WRITE)
-	fh.store_line(to_json(glyphs))
+	fh.store_line(to_json(baseGlyphs))
 	fh.close()
 	print("Saved:")
-	print(glyphs)
+	print(baseGlyphs)
 	
 #func get_bin_translation(bin):
 #	return get_translation(bin_to_dec(bin))
