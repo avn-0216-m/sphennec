@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Glyph",
 "language": "GDScript",
-"path": "res://GlyphClass.gd"
+"path": "res://classes/GlyphClass.gd"
 }, {
 "base": "Node",
 "class": "Sound",
 "language": "GDScript",
-"path": "res://SoundClass.gd"
+"path": "res://classes/SoundClass.gd"
 }, {
 "base": "Tabs",
 "class": "SphennecTabs",

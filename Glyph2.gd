@@ -24,19 +24,25 @@ func set_mode(newMode: int):
 
 func update():
 	
-	# --- General Stuff ---
 	# Set flip circle visibility
 	$ColorRect/VBoxContainer/CenterContainer/FlipCircle.visible = flipped
 	
+	# Glyph line colour
 	$ColorRect/VBoxContainer/Glyphs/.modulate = DATA.glyphColor
 	$ColorRect/VBoxContainer/Glyphs/.modulate = DATA.glyphColor
 	$ColorRect/VBoxContainer/CenterContainer/FlipCircle.modulate = DATA.glyphColor
 	
+	# Setting glyph information
 	if outerGlyph != null:
 		$ColorRect/VBoxContainer/Glyphs/Outer.texture = outerGlyph.texture
+		$ColorRect/VBoxContainer/Label.text = outerGlyph.sound.text
+		$ColorRect.hint_tooltip = "'" + outerGlyph.sound.text + "' like '" + outerGlyph.sound.example + "'"
 	if innerGlyph != null:
 		$ColorRect/VBoxContainer/Glyphs/Inner.texture = innerGlyph.texture
+		$ColorRect/VBoxContainer/Label.text = innerGlyph.sound.text
+		$ColorRect.hint_tooltip = "'" + innerGlyph.sound.text + "' like '" + innerGlyph.sound.example + "'"
 	if outerGlyph != null and innerGlyph != null:
+		$ColorRect.hint_tooltip = ""
 		if not flipped:
 			$ColorRect/VBoxContainer/Label.text = innerGlyph.sound.text + "-" + outerGlyph.sound.text
 		else:
@@ -79,10 +85,9 @@ func save_definition():
 	#Working under the assumption that editable glyphs only have an inner or an outer...
 	get_active_glyph().sound = newSound
 	$ColorRect/Popup.visible = false
-	update()
+	DATA.update_all()
 
-func text_entry(event: InputEvent):
-	if not event.is_action_pressed("ui_accept"): return
+func text_entry(new_text: String):
 	save_definition()
 
 #func mouse_entered():
@@ -98,10 +103,13 @@ func text_entry(event: InputEvent):
 
 
 func gui_input(event):
-	return
-	# used to handle right clicks.
-
-
+	if mode != Mode.TRANSLATE: return
+	if event is InputEventMouseButton and event.button_index == BUTTON_RIGHT:
+		queue_free()
+	# used to handle right clicks (to delete) only for translation mode
+	
+func enable_right_clicks():
+	$ColorRect.button_mask = BUTTON_MASK_LEFT | BUTTON_MASK_RIGHT
 
 
 func button_pressed():

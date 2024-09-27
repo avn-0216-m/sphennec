@@ -9,6 +9,7 @@ func _ready():
 		var glyphObj = glyphSrc.instance()
 		glyphObj.set_glyph(glyph)
 		glyphObj.set_mode(2)
+		glyphObj.enable_right_clicks()
 		glyphObj.rect_min_size = Vector2(531,745) * scale
 		glyphObj.connect("append_glyph", self, "append_glyph")
 		if glyph.type == Glyph.Type.INNER:
@@ -25,4 +26,9 @@ func add_new_glyph(glyph = null):
 	$"VBoxContainer/HBoxContainer2/Glyph Editor/HBoxContainer".add_child(glyphObj)
 	
 func append_glyph(glyph: Glyph):
-	add_new_glyph(glyph)
+	
+	var mostRecentGlyph = $"VBoxContainer/HBoxContainer2/Glyph Editor/HBoxContainer".get_children().back()
+	if mostRecentGlyph == null: add_new_glyph(glyph)
+	elif glyph.type == glyph.Type.INNER and mostRecentGlyph.innerGlyph == null: mostRecentGlyph.set_glyph(glyph)
+	elif glyph.type == glyph.Type.OUTER and mostRecentGlyph.outerGlyph == null: mostRecentGlyph.set_glyph(glyph)
+	else: add_new_glyph(glyph)

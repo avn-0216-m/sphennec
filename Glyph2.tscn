@@ -5,7 +5,7 @@
 [ext_resource path="res://glyphs/flipcircle.png" type="Texture" id=3]
 [ext_resource path="res://FlipCircle.tres" type="Theme" id=6]
 
-[node name="AspectRatioContainer" type="AspectRatioContainer"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" groups=["Update"]]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -28,7 +28,7 @@ margin_bottom = 745.0
 rect_min_size = Vector2( 99, 139.5 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-button_mask = 3
+shortcut_in_tooltip = false
 script = ExtResource( 2 )
 
 [node name="Popup" type="PopupMenu" parent="ColorRect"]

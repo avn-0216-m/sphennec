@@ -47,6 +47,10 @@ var baseGlyphs: Array = [
 	Glyph.new(preload("res://glyphs/Outer 18.png"), Glyph.Type.OUTER)
 ]
 
+var words: Array = [
+	
+]
+
 func _ready():
 	load_from_file()
 	
@@ -60,26 +64,9 @@ func load_from_file():
 # check if whole byte is the same as the inner OR the outer
 # if it is, then the glyph is only representing one phenome and the flip value can be ignored
 
-func unflip(byte):
-	return "0" + byte.substr(1)
-
-func check_byte_length(byte):
-	return len(byte) == 13
-
-func get_inner_byte(byte):
-	if not check_byte_length(byte): return
-	return "0" + "00000" + byte.substr(6)
-	
-func get_outer_byte(byte):
-	if not check_byte_length(byte): return
-	return "0" + byte.substr(1,5) + "0000000"
-	
-func get_flip_byte(byte):
-	if not check_byte_length(byte): return
-	return byte.substr(0,1) + "000000000000"
-	
-func is_flipped(byte):
-	return byte.substr(0,1) == "1"
+func update_all():
+	for glyphCard in get_tree().get_nodes_in_group("Update"):
+		glyphCard.update()
 
 func set_translation(key, value):
 	return
