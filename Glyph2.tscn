@@ -138,7 +138,6 @@ rect_min_size = Vector2( 0, 5 )
 margin_top = 731.0
 margin_right = 530.0
 margin_bottom = 745.0
-text = "sound"
 align = 1
 
 [node name="Tween" type="Tween" parent="."]

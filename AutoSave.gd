@@ -2,11 +2,15 @@ extends CheckBox
 
 var autosave: bool = true
 
+func _ready():
+	toggle(autosave)
 
 func timer_done():
 	print("Autosaving!")
-	return
-	DATA.save_file()
+	DATA.save_to_file()
 
 func toggle(val: bool):
-	$Timer.paused = !val
+	if val:
+		$Timer.start()
+	else:
+		$Timer.stop()

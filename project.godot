@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "SphennecTabs",
 "language": "GDScript",
 "path": "res://SphennecTabs.gd"
+}, {
+"base": "Node",
+"class": "WordClass",
+"language": "GDScript",
+"path": "res://classes/WordClass.gd"
 } ]
 _global_script_class_icons={
 "Glyph": "",
 "Sound": "",
-"SphennecTabs": ""
+"SphennecTabs": "",
+"WordClass": ""
 }
 
 [application]

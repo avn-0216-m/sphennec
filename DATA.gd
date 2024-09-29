@@ -53,9 +53,6 @@ var words: Array = [
 
 func _ready():
 	load_from_file()
-	
-func load_from_file():
-	print("Loaaaaded~")
 
 #0000000000000
 #foooooiiiiiii
@@ -71,27 +68,32 @@ func update_all():
 func set_translation(key, value):
 	return
 
-#func load_from_file():
-#	print("Loading glyphs...")
-#	var fh = File.new()
-#	if not fh.file_exists("user://sphennec.dat"):
-#		print("Creating new save file.")
-#		save_to_file()
-#	fh.open("user://sphennec.dat", File.READ)
-#	baseGlyphs = JSON.parse(fh.get_line()).get_result()
-#	fh.close()
-#	print("Loaded:")
-#	print(baseGlyphs)
+func load_from_file():
+	print("Loading glyphs...")
+	var fh = File.new()
+	if not fh.file_exists("user://sphennec.dat"):
+		print("Creating new save file.")
+		save_to_file()
+	fh.open("user://sphennec.dat", File.READ)
+	var loaded_glyphs = []
+	for glyph in JSON.parse(fh.get_line()).get_result():
+		loaded_glyphs.append(Glyph.new(load(glyph[0]), glyph[1], Sound.new(glyph[2], glyph[3])))
+		#loaded_glyphs.append([glyph.texture.load_path, glyph.type, glyph.sound.text, glyph.sound.example])
+	fh.close()
+	baseGlyphs = loaded_glyphs
+	print("Loaded!")
+
 	
 func save_to_file():
 	print("Saving glyphs...")
-	print(baseGlyphs)
+	var save_data = []
+	for glyph in baseGlyphs:
+		save_data.append([glyph.texture.load_path, glyph.type, glyph.sound.text, glyph.sound.example])
 	var fh = File.new()
 	fh.open("user://sphennec.dat", File.WRITE)
-	fh.store_line(to_json(baseGlyphs))
+	fh.store_line(to_json(save_data))
 	fh.close()
-	print("Saved:")
-	print(baseGlyphs)
+	print("Saved!")
 	
 #func get_bin_translation(bin):
 #	return get_translation(bin_to_dec(bin))
